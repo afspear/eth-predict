@@ -11,6 +11,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.*;
 import java.net.URI;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
@@ -105,9 +106,11 @@ public class DataDownloader {
         String header = "etherprice,blocksize,gasprice,gasused,blocks,hashrate,difficulty,ethersupplygrowth,uncles,gaslimit,blocktime,chaindatasize,ethersupply,next-day-etherprice";
 
         try {
-            Files.delete(Paths.get("allData.csv"));
+            Path alldataCSV = Paths.get("allData.csv");
+            if(Files.exists(alldataCSV))
+                Files.delete(alldataCSV);
             Files.createFile(Paths.get("allData.csv"));
-            Files.write(Paths.get("allData.csv"), header.getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get("allData.csv"), (header + "\n").getBytes(), StandardOpenOption.APPEND);
 
 
             NavigableSet<Date> dates = allData.descendingKeySet();
@@ -118,7 +121,9 @@ public class DataDownloader {
 
                 Map<String, String> thisDaysData = allData.get(date);
                 List<String> headers = Arrays.asList(header.split(","));
-                headers.stream().skip(2).forEach(s -> {
+                headers
+                  .stream()
+                  .forEach(s -> {
                     String data = thisDaysData.get(s);
                     if (data != null)
                         stringJoiner.add(data);
