@@ -11,6 +11,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <repositories>
+        <repository>
+            <id>sonatype snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -33,11 +39,42 @@
             <artifactId>gson</artifactId>
             <version>2.6.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.encog/encog-core -->
         <dependency>
-            <groupId>org.encog</groupId>
-            <artifactId>encog-core</artifactId>
-            <version>3.4</version>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-core</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-api</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-native-platform</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.verdelhan</groupId>
+            <artifactId>ta4j</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>slf4j-binding</artifactId>
+            <version>1.2</version>
         </dependency>
 
 
